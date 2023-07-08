@@ -40,17 +40,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async setupDatabase (databaseToBeUsed: string): Promise<boolean> {
-    if (!await this.databaseExists(databaseToBeUsed)) {
-      await this.createDatabase(databaseToBeUsed)
-    }
-    await this.pool?.query('USE ' + databaseToBeUsed)
-    if (!await this.everyNecessaryTableHaveBeenCreated()) {
-      await this.createNecessaryTables()
-    }
-    return true
-  }
-
   async createDatabase (databaseName: string): Promise<boolean> {
     console.log('creating new database')
     await this.pool?.query('CREATE DATABASE ' + databaseName + ';')
