@@ -12,6 +12,14 @@ class MariadbDataSource implements IMariadbDataSource {
 
   constructor (readonly databaseHelper: IDatabaseHelper) {}
 
+  async bootstrap (): Promise<boolean> {
+    await this.openConnectionPool()
+    await this.createNecessaryDatabases()
+    await this.useMotionBladeDatabase()
+    await this.createNecessaryTables()
+    return true
+  }
+
   async startConnection (): Promise<boolean> {
     console.log('connection started')
     this.connection = await mariadb.createConnection({ host: config.mariadb.host, user: config.mariadb.username, password: config.mariadb.password })
