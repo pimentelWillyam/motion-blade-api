@@ -48,6 +48,11 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
+  async createNecessaryDatabases (): Promise<boolean> {
+    if (!await this.motionBladeDatabaseExists()) await this.createMotionBladeDatabase()
+    return true
+  }
+
   async tableExists (tableName: string): Promise<boolean> {
     const res = await this.pool?.query("SHOW TABLES FROM intranet LIKE '" + tableName + "' ;")
     if (res[0] == null) {
