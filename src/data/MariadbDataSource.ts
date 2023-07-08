@@ -40,12 +40,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async createDatabase (databaseName: string): Promise<boolean> {
-    console.log('creating new database')
-    await this.pool?.query('CREATE DATABASE ' + databaseName + ';')
-    return true
-  }
-
   async databaseExists (databaseName: string): Promise<boolean> {
     const databaseList = await this.pool?.query("SHOW DATABASES LIKE '" + databaseName + "' ;")
     if (databaseList.length === 0) {
