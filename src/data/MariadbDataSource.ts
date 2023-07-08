@@ -61,11 +61,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async getEverythingFromTable (database: string, tableName: string): Promise<unknown[]> {
-    const tableContent = await this.pool?.query('SELECT * FROM ' + database + '.' + tableName + ';')
-    return tableContent
-  }
-
   async insertRegistryIntoTable (database: string, tableName: string, columnList: string[], propertyList: string[]): Promise<boolean> {
     const columns = this.databaseHelper.getColumnsFromColumnListForInsertion(columnList)
     const properties = this.databaseHelper.getPropertiesFromPropertyListForInsertion(propertyList)
