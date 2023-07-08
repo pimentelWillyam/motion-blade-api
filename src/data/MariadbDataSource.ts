@@ -60,11 +60,6 @@ class MariadbDataSource implements IMariadbDataSource {
 
     return true
   }
-
-  async deleteRegistryBy (databaseName: string, tableName: string, whereParameter: string, whereValue: string): Promise<boolean> {
-    await this.pool?.query('DELETE FROM ' + databaseName + '.' + tableName + ' WHERE ' + whereParameter + " = '" + whereValue + "';")
-    return true
-  }
 }
 
 export default MariadbDataSource
