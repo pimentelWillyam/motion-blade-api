@@ -18,6 +18,15 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
+  async stopConnection (): Promise<boolean> {
+    if (this.connection === undefined) {
+      return false
+    }
+    console.log('connection stopped')
+    await this.connection.end()
+    return true
+  }
+
   async openConnectionPool (): Promise<boolean> {
     this.pool = mariadb.createPool({ host: config.mariadb.host, user: config.mariadb.username, password: config.mariadb.password })
     return true
@@ -28,15 +37,6 @@ class MariadbDataSource implements IMariadbDataSource {
       return false
     }
     await this.pool.end()
-    return true
-  }
-
-  async stopConnection (): Promise<boolean> {
-    if (this.connection === undefined) {
-      return false
-    }
-    console.log('connection stopped')
-    await this.connection.end()
     return true
   }
 
