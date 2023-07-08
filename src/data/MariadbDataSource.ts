@@ -83,6 +83,12 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
+  async createMasterTable (): Promise<boolean> {
+    console.log('creating master table')
+    await this.pool?.query("CREATE TABLE `master` (`id` UUID NULL, `name` VARCHAR(50) NULL DEFAULT NULL, `servant_list` SET('Value A','Value B') NULL DEFAULT NULL) COLLATE='latin1_swedish_ci' ;")
+    return true
+  }
+
   async createUserTable (): Promise<boolean> {
     console.log('creating user table')
     await this.pool?.query("CREATE TABLE `user` (`id` UUID NULL,`login` VARCHAR(50) NULL DEFAULT NULL,`password` VARCHAR(60) NULL DEFAULT NULL,`email` VARCHAR(50) NULL DEFAULT NULL,`type` VARCHAR(50) NULL DEFAULT NULL)COLLATE='latin1_swedish_ci';")
