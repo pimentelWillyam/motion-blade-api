@@ -3,10 +3,10 @@ import config from '../config'
 import * as mariadb from 'mariadb'
 import type { Connection, Pool } from 'mariadb'
 
-import type IDataSource from '../api/interface/IDataSource'
 import type IDatabaseHelper from '../api/interface/IDatabaseHelper'
+import type IMariadbDataSource from '../api/interface/IMariadbDataSource'
 
-class MariadbDataSource implements IDataSource {
+class MariadbDataSource implements IMariadbDataSource {
   private connection: Connection | undefined
   private pool: Pool | undefined
 
