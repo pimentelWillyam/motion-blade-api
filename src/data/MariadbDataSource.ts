@@ -48,12 +48,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async createTable (tableName: string, tableColumns: string): Promise<boolean> {
-    console.log('creating new table')
-    await this.pool?.query('CREATE TABLE ' + tableName + ' ' + '(' + tableColumns + ')' + ' ;')
-    return true
-  }
-
   async tableExists (tableName: string): Promise<boolean> {
     const res = await this.pool?.query("SHOW TABLES FROM intranet LIKE '" + tableName + "' ;")
     if (res[0] == null) {
