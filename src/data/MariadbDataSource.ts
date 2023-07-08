@@ -61,12 +61,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async updateRegistryById (databaseName: string, tableName: string, id: string, columnList: string[], registryList: string[]): Promise<boolean> {
-    const columnsAndRegistriesToUpdate = this.databaseHelper.getColumnsAndRegistriesToUpdate(columnList, registryList)
-    await this.pool?.query('UPDATE ' + databaseName + '.' + tableName + ' SET ' + columnsAndRegistriesToUpdate + " WHERE id = '" + id + "';")
-    return true
-  }
-
   async updateRegistryBy (databaseName: string, tableName: string, whereParameter: string, whereValue: string, columnList: string[], registryList: string[]): Promise<boolean> {
     const columnsAndRegistriesToUpdate = this.databaseHelper.getColumnsAndRegistriesToUpdate(columnList, registryList)
     // await this.pool?.query('UPDATE ' + tableName + ' SET ' + column + ' = ' + newContent + 'WHERE id =' + id + ';')
