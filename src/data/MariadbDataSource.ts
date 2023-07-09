@@ -116,6 +116,11 @@ class MariadbDataSource implements IMariadbDataSource {
 
     return true
   }
+
+  async insertLogRegistry (id: string, date: string, message: string): Promise<ILogEntity> {
+    await this.pool?.query(`INSERT INTO intranet.log (id, date, message) VALUES ('${id}', '${date}', '${message}');`)
+    return { id, date, message }
+  }
 }
 
 export default MariadbDataSource
