@@ -109,11 +109,6 @@ class MariadbDataSource implements IMariadbDataSource {
     return true
   }
 
-  async deleteTable (table: string): Promise<boolean> {
-    await this.pool?.query('DROP TABLE ' + table)
-    return true
-  }
-
   async createNecessaryTables (): Promise<boolean> {
     await this.createTable('file', 'id VARCHAR(50) NOT NULL, type VARCHAR(50) NOT NULL, date VARCHAR(50) NOT NULL, buffer BLOB NOT NULL ')
     await this.createTable('log', 'id VARCHAR(50) NOT NULL, date VARCHAR(50) NOT NULL, message VARCHAR(50) NOT NULL ')
