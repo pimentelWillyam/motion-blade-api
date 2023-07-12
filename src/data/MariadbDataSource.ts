@@ -110,10 +110,11 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async createNecessaryTables (): Promise<boolean> {
-    await this.createTable('file', 'id VARCHAR(50) NOT NULL, type VARCHAR(50) NOT NULL, date VARCHAR(50) NOT NULL, buffer BLOB NOT NULL ')
-    await this.createTable('log', 'id VARCHAR(50) NOT NULL, date VARCHAR(50) NOT NULL, message VARCHAR(50) NOT NULL ')
-    await this.createTable('user', 'id VARCHAR(50) NOT NULL, login VARCHAR(50) NOT NULL, password VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, type VARCHAR(50) NOT NULL ')
-
+    await this.createBattleTable()
+    await this.createLogTable()
+    await this.createMasterTable()
+    await this.createServantTable()
+    await this.createUserTable()
     return true
   }
 
