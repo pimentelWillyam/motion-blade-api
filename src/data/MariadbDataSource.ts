@@ -102,7 +102,7 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async tableExists (tableName: string): Promise<boolean> {
-    const res = await this.pool?.query("SHOW TABLES FROM intranet LIKE '" + tableName + "' ;")
+    const res = await this.pool?.query("SHOW TABLES FROM motion_blade LIKE '" + tableName + "' ;")
     if (res[0] == null) {
       return false
     }
