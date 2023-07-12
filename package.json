@@ -3,6 +3,7 @@
     "server": "ts-node src/index.ts",
     "new": "ts-node src/newIndex.ts",
     "test": "jest --runInBand",
+    "testing": "ts-node src/testing.ts",
     "lint": "npx eslint ./src/index.ts --fix",
     "db": "ts-node src/data/dbTester.ts"
   },
