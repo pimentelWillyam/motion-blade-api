@@ -122,6 +122,11 @@ class MariadbDataSource implements IMariadbDataSource {
     await this.pool?.query(`INSERT INTO motion_blade.log (id, date, message) VALUES ('${id}', '${date}', '${message}');`)
     return { id, date, message }
   }
+
+  async insertBattleRegistry (id: string, map: number[][], participants: IServant[]): Promise<IBattle> {
+    await this.pool?.query('')
+    return { id, map, participants }
+  }
 }
 
 export default MariadbDataSource
