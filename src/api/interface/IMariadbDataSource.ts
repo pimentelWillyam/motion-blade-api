@@ -15,7 +15,7 @@ interface IMariadbDataSource {
   createUserTable: () => Promise<boolean>
   tableExists: (tableName: string) => Promise<boolean>
   createNecessaryTables: () => Promise<boolean>
-  insertBattleRegistry: (unknown: unknown) => Promise<unknown>
+  insertBattleRegistry: (id: string, map: number[][], participants: IServant[]) => Promise<IBattle>
   insertLogRegistry: (id: string, date: string, message: string) => Promise<ILogEntity>
   insertMasterRegistry: (unknown: unknown) => Promise<unknown>
   insertServantRegistry: (unknown: unknown) => Promise<unknown>
