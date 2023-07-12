@@ -5,6 +5,9 @@ import type { Connection, Pool } from 'mariadb'
 
 import type IDatabaseHelper from '../api/interface/IDatabaseHelper'
 import type IMariadbDataSource from '../api/interface/IMariadbDataSource'
+import type IMaster from '../api/interface/IMaster'
+import type IBattle from '../api/interface/IBattle'
+import type ILogEntity from '../api/interface/ILogEntity'
 
 class MariadbDataSource implements IMariadbDataSource {
   private connection: Connection | undefined
