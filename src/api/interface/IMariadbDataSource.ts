@@ -1,5 +1,7 @@
 import type ILogEntity from './ILogEntity'
 import type IUserEntity from './IUserEntity'
+import type IBattle from './IBattle'
+import type IServant from './IServant'
 
 interface IMariadbDataSource {
   startConnection: () => Promise<boolean>
