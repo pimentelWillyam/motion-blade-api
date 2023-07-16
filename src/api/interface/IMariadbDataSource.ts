@@ -2,6 +2,7 @@ import type ILogEntity from './ILogEntity'
 import type IUserEntity from './IUserEntity'
 import type IBattle from './IBattle'
 import type IServant from './IServant'
+import type IMaster from './IMaster'
 
 interface IMariadbDataSource {
   startConnection: () => Promise<boolean>
@@ -19,7 +20,7 @@ interface IMariadbDataSource {
   createNecessaryTables: () => Promise<boolean>
   insertBattleRegistry: (id: string, map: number[][], participants: IServant[]) => Promise<IBattle>
   insertLogRegistry: (id: string, date: string, message: string) => Promise<ILogEntity>
-  insertMasterRegistry: (unknown: unknown) => Promise<unknown>
+  insertMasterRegistry: (id: string, name: string, servantList: IServant[]) => Promise<IMaster>
   insertServantRegistry: (unknown: unknown) => Promise<unknown>
   insertUserRegistry: (id: string, loginlogin: string, password: string, email: string, type: string) => Promise<IUserEntity>
   getEveryBattleRegistry: (unknown: unknown) => Promise<unknown>
