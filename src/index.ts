@@ -8,7 +8,6 @@ import Api from './helper/Api'
 import TokenManager from './helper/TokenManager'
 import ApiMiddleware from './helper/ApiMiddleware'
 import Crypto from './helper/Crypto'
-import Sleeper from './helper/Sleeper'
 import UuidGenerator from './helper/UuidGenerator'
 import DateManager from './helper/DateManager'
 
