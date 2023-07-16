@@ -10,27 +10,21 @@ import ApiMiddleware from './helper/ApiMiddleware'
 import Crypto from './helper/Crypto'
 import Sleeper from './helper/Sleeper'
 import UuidGenerator from './helper/UuidGenerator'
-import FileManager from './helper/FileManager'
 import DateManager from './helper/DateManager'
 
 // importing data classes
-import LocalStorage from './data/LocalStorage'
 import MariadbDataSource from './data/MariadbDataSource'
-import OracledbDataSource from './data/OracledbDataSource'
 // importing routers
-import FileRouter from './api/router/FileRouter'
 import LogRouter from './api/router/LogRouter'
 import UserRouter from './api/router/UserRouter'
 import AuthRouter from './api/router/AuthRouter'
 
 // importing controllers
-import FileController from './api/controller/FileController'
 import LogController from './api/controller/LogController'
 import UserController from './api/controller/UserController'
 import AuthController from './api/controller/AuthController'
 
 // importing validators
-import FileValidator from './api/validator/FileValidator'
 import LogValidator from './api/validator/LogValidator'
 import UserValidator from './api/validator/UserValidator'
 
@@ -38,10 +32,8 @@ import UserValidator from './api/validator/UserValidator'
 import LogService from './api/service/LogService'
 import UserService from './api/service/UserService'
 import AuthService from './api/service/AuthService'
-import FileService from './api/service/FileService'
 
 // importing repositories
-import FileRepository from './api/repository/FileRepository'
 import LogRepository from './api/repository/LogRepository'
 import UserRepository from './api/repository/UserRepository'
 
@@ -56,11 +48,9 @@ import DatabaseHelper from './helper/DatabaseHelper'
 
 // instanciating helpers
 const crypto = new Crypto()
-const sleeper = new Sleeper()
 const uuidGenerator = new UuidGenerator()
 const dateManager = new DateManager()
 const tokenManager = new TokenManager()
-const fileManager = new FileManager()
 const server = new Server()
 const apiMiddleware = new ApiMiddleware()
 
@@ -68,11 +58,9 @@ const apiMiddleware = new ApiMiddleware()
 const databaseHelper = new DatabaseHelper()
 const mariadbDataSource = new MariadbDataSource(databaseHelper)
 // const oracledbDataSource = new OracledbDataSource()
-const localStorage = new LocalStorage()
 
 // instanciating repositories
 // using repositories with mariadb
-const fileRepository = new FileRepository(mariadbDataSource, fileManager, uuidGenerator)
 const logRepository = new LogRepository(mariadbDataSource, uuidGenerator, dateManager)
 const userRepository = new UserRepository(mariadbDataSource)
 
@@ -83,29 +71,25 @@ const userRepository = new UserRepository(mariadbDataSource)
 
 // instanciating services
 const logService = new LogService(logRepository, uuidGenerator, dateManager)
-const fileService = new FileService(fileRepository, fileManager, uuidGenerator, sleeper)
 const userService = new UserService(userRepository, crypto, uuidGenerator, dateManager)
 const authService = new AuthService(userRepository, crypto, tokenManager)
 
 // instanciating validators
 const logValidator = new LogValidator()
-const fileValidator = new FileValidator()
 const userValidator = new UserValidator(userRepository)
 
 // instanciating controllers
-const fileController = new FileController(fileService, fileValidator, fileManager, sleeper)
 const logController = new LogController(logService, logValidator)
 const userController = new UserController(userService, userValidator)
 const authController = new AuthController(authService, userRepository, crypto, tokenManager)
 
 // instanciating routers
-const fileRouter = new FileRouter(fileController, localStorage)
 const logRouter = new LogRouter(logController)
 const userRouter = new UserRouter(userController)
 const authRouter = new AuthRouter(authController)
 
 // instanciating app related classes
-const api = new Api(express(), apiMiddleware, fileRouter, logRouter, userRouter, authRouter)
+const api = new Api(express(), apiMiddleware, logRouter, userRouter, authRouter)
 const app = new App(api, server)
 
 // getting .env configuration
