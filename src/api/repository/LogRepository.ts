@@ -1,13 +1,13 @@
 import config from '../../config'
 
-import type IDataSource from '../interface/IDataSource'
 import type ILogRepository from '../interface/ILogRepository'
 import type IUuidGenerator from '../interface/IUuidGenerator'
 import type IDateManager from '../interface/IDateManager'
 import type ILogEntity from '../interface/ILogEntity'
+import type IMariadbDataSource from '../interface/IMariadbDataSource'
 
 class LogRepository implements ILogRepository {
-  constructor (readonly dataSource: IDataSource, readonly uuidGenerator: IUuidGenerator, readonly dateManager: IDateManager) {}
+  constructor (readonly dataSource: IMariadbDataSource, readonly uuidGenerator: IUuidGenerator, readonly dateManager: IDateManager) {}
 
   async create (id: string, message: string, date: string): Promise<Record<string, unknown>> {
     const log = { id, date, message }
