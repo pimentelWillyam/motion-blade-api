@@ -63,11 +63,6 @@ const mariadbDataSource = new MariadbDataSource(databaseHelper)
 const logRepository = new LogRepository(mariadbDataSource, uuidGenerator, dateManager)
 const userRepository = new UserRepository(mariadbDataSource)
 
-// using repositories with oracledb
-// const fileRepository = new FileRepository(oracledbDataSource, fileManager, uuidGenerator)
-// const logRepository = new LogRepository(oracledbDataSource, uuidGenerator, dateManager)
-// const userRepository = new UserRepository(oracledbDataSource)
-
 // instanciating services
 const logService = new LogService(logRepository, uuidGenerator, dateManager)
 const userService = new UserService(userRepository, crypto, uuidGenerator, dateManager)
