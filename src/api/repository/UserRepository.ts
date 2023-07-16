@@ -2,11 +2,11 @@
 import config from '../../config'
 
 import type IUserRepository from '../interface/IUserRepository'
-import type IDataSource from '../interface/IDataSource'
 import type IUserEntity from '../interface/IUserEntity'
+import type IMariadbDataSource from '../interface/IMariadbDataSource'
 
 class UserRepository implements IUserRepository {
-  constructor (readonly dataSource: IDataSource) { this.dataSource = dataSource }
+  constructor (readonly dataSource: IMariadbDataSource) { this.dataSource = dataSource }
   async create (id: string, login: string, password: string, email: string, type: string): Promise<Record<string, unknown>> {
     await this.dataSource.insertRegistryIntoTable(config.mariadb.productionDatabase, 'user', ['id', 'login', 'password', 'email', 'type'], [id, login, password, email, type])
     const user = { id, login, password, email, type }
