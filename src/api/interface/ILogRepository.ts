@@ -1,8 +1,8 @@
 import type ILogEntity from '../interface/ILogEntity'
-import type IDataSource from './IDataSource'
+import type IMariadbDataSource from './IMariadbDataSource'
 
 interface ILogRepository {
-  readonly dataSource: IDataSource
+  readonly dataSource: IMariadbDataSource
 
   create: (id: string, message: string, date: string) => Promise<Record<string, unknown>>
   getAll: () => Promise<unknown[] | null>
