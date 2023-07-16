@@ -1,8 +1,8 @@
 import type UserEntity from '../entity/UserEntity'
-import type IDataSource from './IDataSource'
+import type IMariadbDataSource from './IMariadbDataSource'
 
 interface IUserRepository {
-  readonly dataSource: IDataSource
+  readonly dataSource: IMariadbDataSource
 
   create: (id: string, login: string, password: string, email: string, type: string) => Promise<Record<string, unknown>>
   getAll: () => Promise<unknown[] | null>
