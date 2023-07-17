@@ -31,7 +31,7 @@ interface IMariadbDataSource {
   getEveryUserRegistry: () => Promise<IUserEntity[]>
   getBattleBy: (parameter: string, value: string) => Promise<IBattle[]>
   getLogBy: (parameter: string, value: string) => Promise<ILogEntity[]>
-  getMasterBy: (parameter: string, value: string) => Promise<unknown[]>
+  getMasterBy: (parameter: string, value: string) => Promise<IMaster[]>
   getServantBy: (parameter: string, value: string) => Promise<unknown[]>
   getUserBy: (parameter: string, value: string) => Promise<IUserEntity[]>
   updateBattleById: (unknown: unknown) => Promise<unknown[]>
