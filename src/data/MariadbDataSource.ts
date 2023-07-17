@@ -148,6 +148,10 @@ class MariadbDataSource implements IMariadbDataSource {
     await this.pool?.query(`INSERT INTO motion_blade.servant (id, login, password, email, type) VALUES ('${id}', '${login}', '${password}', '${email}', '${type}' ;`)
     return { id, login, password, email, type }
   }
+
+  async getEveryBattleRegistry (): Promise<IBattle[]> {
+    return await this.pool?.query('SELECT * FROM intranet.battle ;') as IBattle[]
+  }
 }
 
 export default MariadbDataSource
