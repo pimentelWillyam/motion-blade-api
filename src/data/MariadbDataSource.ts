@@ -10,6 +10,7 @@ import type IBattle from '../api/interface/IBattle'
 import type ILogEntity from '../api/interface/ILogEntity'
 import type IMaster from '../api/interface/IMaster'
 import type Attributes from '../api/type/Attributes'
+import type IUserEntity from '../api/interface/IUserEntity'
 
 class MariadbDataSource implements IMariadbDataSource {
   private connection: Connection | undefined
@@ -138,9 +139,14 @@ class MariadbDataSource implements IMariadbDataSource {
     return { id, name, servantList }
   }
 
-  async insertServantRegistry(id: string, masterId: string, name: string, profession: string, seniority: number, attributes: Attributes, isInBattle: boolean, battlePosition: [number, number]): Promise<IServant> {
+  async insertServantRegistry (id: string, masterId: string, name: string, profession: string, seniority: number, attributes: Attributes, isInBattle: boolean, battlePosition: [number, number]): Promise<IServant> {
     await this.pool?.query(`INSERT INTO motion_blade.servant (id, master_id, name, profession, seniority, attributes, is_in_battle, battle_position ) VALUES ('${id}', '${masterId}', '${name}', '${profession}', '${seniority}', '${attributes}', '${isInBattle}', '${battlePosition}' ;`)
     return { id, masterId, name, profession, seniority, attributes, isInBattle, battlePosition }
+  }
+
+  async insertUserRegistry (id: string, login: string, password: string, email: string, type: string): Promise<IUserEntity> {
+    await this.pool?.query(`INSERT INTO motion_blade.servant (id, login, password, email, type) VALUES ('${id}', '${login}', '${password}', '${email}', '${type}' ;`)
+    return { id, login, password, email, type }
   }
 }
 
