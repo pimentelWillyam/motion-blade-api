@@ -154,7 +154,11 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async getEveryLogRegistry (): Promise<ILogEntity[]> {
-    return await this.pool?.query('SELECT * FROM intranet.battle ;') as ILogEntity[]
+    return await this.pool?.query('SELECT * FROM intranet.log ;') as ILogEntity[]
+  }
+
+  async getEveryMasterRegistry (): Promise<IMaster[]> {
+    return await this.pool?.query('SELECT * FROM intranet.master ;') as IMaster[]
   }
 }
 
