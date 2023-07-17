@@ -3,6 +3,7 @@ import type IUserEntity from './IUserEntity'
 import type IBattle from './IBattle'
 import type IServant from './IServant'
 import type IMaster from './IMaster'
+import type Attributes from '../type/Attributes'
 
 interface IMariadbDataSource {
   startConnection: () => Promise<boolean>
