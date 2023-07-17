@@ -164,6 +164,10 @@ class MariadbDataSource implements IMariadbDataSource {
   async getEveryServantRegistry (): Promise<IServant[]> {
     return await this.pool?.query('SELECT * FROM intranet.servant ;') as IServant[]
   }
+
+  async getEveryUserRegistry (): Promise<IUserEntity[]> {
+    return await this.pool?.query('SELECT * FROM intranet.user ;') as IUserEntity[]
+  }
 }
 
 export default MariadbDataSource
