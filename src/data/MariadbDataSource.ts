@@ -152,6 +152,10 @@ class MariadbDataSource implements IMariadbDataSource {
   async getEveryBattleRegistry (): Promise<IBattle[]> {
     return await this.pool?.query('SELECT * FROM intranet.battle ;') as IBattle[]
   }
+
+  async getEveryLogRegistry (): Promise<ILogEntity[]> {
+    return await this.pool?.query('SELECT * FROM intranet.battle ;') as ILogEntity[]
+  }
 }
 
 export default MariadbDataSource
