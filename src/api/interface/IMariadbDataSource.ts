@@ -29,7 +29,7 @@ interface IMariadbDataSource {
   getEveryMasterRegistry: () => Promise<IMaster[]>
   getEveryServantRegistry: () => Promise<IServant[]>
   getEveryUserRegistry: () => Promise<IUserEntity[]>
-  getBattleBy: (parameter: string, value: string) => Promise<unknown[]>
+  getBattleBy: (parameter: string, value: string) => Promise<IBattle[]>
   getLogBy: (parameter: string, value: string) => Promise<ILogEntity[]>
   getMasterBy: (parameter: string, value: string) => Promise<unknown[]>
   getServantBy: (parameter: string, value: string) => Promise<unknown[]>
