@@ -9,6 +9,7 @@ import type IServant from '../api/interface/IServant'
 import type IBattle from '../api/interface/IBattle'
 import type ILogEntity from '../api/interface/ILogEntity'
 import type IMaster from '../api/interface/IMaster'
+import type Attributes from '../api/type/Attributes'
 
 class MariadbDataSource implements IMariadbDataSource {
   private connection: Connection | undefined
@@ -135,6 +136,11 @@ class MariadbDataSource implements IMariadbDataSource {
   async insertMasterRegistry (id: string, name: string, servantList: IServant[]): Promise<IMaster> {
     await this.pool?.query(`INSERT INTO motion_blade.master (id, name, servant_list) VALUES ('${id}', '${name}', '${servantList}');`)
     return { id, name, servantList }
+  }
+
+  async insertServantRegistry(id: string, masterId: string, name: string, profession: string, seniority: number, attributes: Attributes, isInBattle: boolean, battlePosition: [number, number]): Promise<IServant> {
+    await this.pool?.query(`INSERT INTO motion_blade.servant (id, master_id, name, profession, seniority, attributes, is_in_battle, battle_position ) VALUES ('${id}', '${masterId}', '${name}', '${profession}', '${seniority}', '${attributes}', '${isInBattle}', '${battlePosition}' ;`)
+    return { id, masterId, name, profession, seniority, attributes, isInBattle, battlePosition }
   }
 }
 
