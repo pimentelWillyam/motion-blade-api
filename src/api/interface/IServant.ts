@@ -1,13 +1,14 @@
+import type Atributes from '../type/Attributes'
+
 interface IServant {
   id: string
   masterId: string
   name: string
   profession: string
   seniority: number
-  atributes: Atributes
+  attributes: Atributes
   isInBattle: boolean
   battlePosition: [number, number]
-  
 
 }
 
