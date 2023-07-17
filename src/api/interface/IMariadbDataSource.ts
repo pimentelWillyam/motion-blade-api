@@ -26,7 +26,7 @@ interface IMariadbDataSource {
   insertUserRegistry: (id: string, login: string, password: string, email: string, type: string) => Promise<IUserEntity>
   getEveryBattleRegistry: () => Promise<IBattle[]>
   getEveryLogRegistry: () => Promise<ILogEntity[]>
-  getEveryMasterRegistry: (unknown: unknown) => Promise<unknown>
+  getEveryMasterRegistry: () => Promise<IMaster[]>
   getEveryServantRegistry: (unknown: unknown) => Promise<unknown>
   getEveryUserRegistry: () => Promise<IUserEntity[]>
   getBattleBy: (parameter: string, value: string) => Promise<unknown[]>
