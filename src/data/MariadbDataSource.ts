@@ -11,6 +11,7 @@ import type ILogEntity from '../api/interface/ILogEntity'
 import type IMaster from '../api/interface/IMaster'
 import type Attributes from '../api/type/Attributes'
 import type IUserEntity from '../api/interface/IUserEntity'
+import Master from '../api/entity/Master'
 
 class MariadbDataSource implements IMariadbDataSource {
   private connection: Connection | undefined
@@ -175,6 +176,10 @@ class MariadbDataSource implements IMariadbDataSource {
 
   async getLogBy (parameter: string, value: string): Promise<ILogEntity> {
     return await this.pool?.query(`SELECT * FROM intranet.log WHERE ${parameter} = ${value} ;`) as ILogEntity
+  }
+
+  async getMasterBy (parameter: string, value: string): Promise<IMaster> {
+    return await this.pool?.query(`SELECT * FROM intranet.master WHERE ${parameter} = ${value} ;`) as IMaster
   }
 }
 
