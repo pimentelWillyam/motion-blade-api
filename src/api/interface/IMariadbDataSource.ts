@@ -36,7 +36,7 @@ interface IMariadbDataSource {
   getUserBy: (parameter: string, value: string) => Promise<IUserEntity>
   updateBattleById: (id: string, map: [number, number], participants: IServant[]) => Promise<IBattle>
   updateMasterById: (id: string, nam: string, servantList: IServant[]) => Promise<IMaster>
-  updateServantById: (unknown: unknown) => Promise<unknown[]>
+  updateServantById: (id: string, masterId: string, name: string, profession: string, seniority: number, attributes: Attributes, isInBattle: boolean, battlePosition: [number, number]) => Promise<IServant>
   deleteBattleById: (id: string) => Promise<boolean>
   deleteUserById: (id: string) => Promise<boolean>
   deleteMasterById: (id: string) => Promise<boolean>
