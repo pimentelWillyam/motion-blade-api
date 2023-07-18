@@ -126,7 +126,7 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async insertBattleRegistry (id: string, map: number[][], participants: IServant[]): Promise<IBattle> {
-    await this.pool?.query('')
+    await this.pool?.query(`INSERT INTO motion_blade.battle (id, map, participants) VALUES ('${id}', '${map}', '${participants}');`)
     return { id, map, participants }
   }
 
