@@ -151,43 +151,48 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async getEveryBattleRegistry (): Promise<IBattle[]> {
-    return await this.pool?.query('SELECT * FROM intranet.battle ;') as IBattle[]
+    return await this.pool?.query('SELECT * FROM motion_blade.battle ;') as IBattle[]
   }
 
   async getEveryLogRegistry (): Promise<ILogEntity[]> {
-    return await this.pool?.query('SELECT * FROM intranet.log ;') as ILogEntity[]
+    return await this.pool?.query('SELECT * FROM motion_blade.log ;') as ILogEntity[]
   }
 
   async getEveryMasterRegistry (): Promise<IMaster[]> {
-    return await this.pool?.query('SELECT * FROM intranet.master ;') as IMaster[]
+    return await this.pool?.query('SELECT * FROM motion_blade.master ;') as IMaster[]
   }
 
   async getEveryServantRegistry (): Promise<IServant[]> {
-    return await this.pool?.query('SELECT * FROM intranet.servant ;') as IServant[]
+    return await this.pool?.query('SELECT * FROM motion_blade.servant ;') as IServant[]
   }
 
   async getEveryUserRegistry (): Promise<IUserEntity[]> {
-    return await this.pool?.query('SELECT * FROM intranet.user ;') as IUserEntity[]
+    return await this.pool?.query('SELECT * FROM motion_blade.user ;') as IUserEntity[]
   }
 
   async getBattleBy (parameter: string, value: string): Promise<IBattle> {
-    return await this.pool?.query(`SELECT * FROM intranet.battle WHERE ${parameter} = ${value} ;`) as IBattle
+    return await this.pool?.query(`SELECT * FROM motion_blade.battle WHERE ${parameter} = ${value} ;`) as IBattle
   }
 
   async getLogBy (parameter: string, value: string): Promise<ILogEntity> {
-    return await this.pool?.query(`SELECT * FROM intranet.log WHERE ${parameter} = ${value} ;`) as ILogEntity
+    return await this.pool?.query(`SELECT * FROM motion_blade.log WHERE ${parameter} = ${value} ;`) as ILogEntity
   }
 
   async getMasterBy (parameter: string, value: string): Promise<IMaster> {
-    return await this.pool?.query(`SELECT * FROM intranet.master WHERE ${parameter} = ${value} ;`) as IMaster
+    return await this.pool?.query(`SELECT * FROM motion_blade.master WHERE ${parameter} = ${value} ;`) as IMaster
   }
 
   async getServantBy (parameter: string, value: string): Promise<IServant> {
-    return await this.pool?.query(`SELECT * FROM intranet.servant WHERE ${parameter} = ${value} ;`) as IServant
+    return await this.pool?.query(`SELECT * FROM motion_blade.servant WHERE ${parameter} = ${value} ;`) as IServant
   }
 
   async getUserBy (parameter: string, value: string): Promise<IUserEntity> {
-    return await this.pool?.query(`SELECT * FROM intranet.user WHERE ${parameter} = ${value} ;`) as IUserEntity
+    return await this.pool?.query(`SELECT * FROM motion_blade.user WHERE ${parameter} = ${value} ;`) as IUserEntity
+  }
+
+  async updateUserById (id: string, login: string, password: string, email: string, type: string): Promise<IUserEntity> {
+    await this.pool?.query(`UPDATE  intranet.user SET id = '${id}', login = '${login}', password = '${password}', email = '${email}', type= '${type}' WHERE id = '${id}';`)
+    return { id, login, password, email, type }
   }
 }
 
