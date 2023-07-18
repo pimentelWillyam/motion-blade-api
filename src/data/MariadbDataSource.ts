@@ -183,7 +183,7 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async getServantBy (parameter: string, value: string): Promise<IServant> {
-    return await this.pool?.query(`SELECT * FROM intranet.master WHERE ${parameter} = ${value} ;`) as IServant
+    return await this.pool?.query(`SELECT * FROM intranet.servant WHERE ${parameter} = ${value} ;`) as IServant
   }
 }
 
