@@ -172,6 +172,10 @@ class MariadbDataSource implements IMariadbDataSource {
   async getBattleBy (parameter: string, value: string): Promise<IBattle> {
     return await this.pool?.query(`SELECT * FROM intranet.battle WHERE ${parameter} = ${value} ;`) as IBattle
   }
+
+  async getLogBy (parameter: string, value: string): Promise<ILogEntity> {
+    return await this.pool?.query(`SELECT * FROM intranet.log WHERE ${parameter} = ${value} ;`) as ILogEntity
+  }
 }
 
 export default MariadbDataSource
