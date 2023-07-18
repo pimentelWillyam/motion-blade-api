@@ -168,6 +168,10 @@ class MariadbDataSource implements IMariadbDataSource {
   async getEveryUserRegistry (): Promise<IUserEntity[]> {
     return await this.pool?.query('SELECT * FROM intranet.user ;') as IUserEntity[]
   }
+
+  async getBattleBy (parameter: string, value: string): Promise<IBattle> {
+    return await this.pool?.query(`SELECT * FROM intranet.battle WHERE ${parameter} = ${value} ;`) as IBattle
+  }
 }
 
 export default MariadbDataSource
