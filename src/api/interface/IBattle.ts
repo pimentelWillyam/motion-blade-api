@@ -2,7 +2,7 @@ import IServant from './IServant'
 
 interface IBattle {
   id: string
-  map: number[][]
+  map: [number, number]
   participants: IServant[]
 }
 
