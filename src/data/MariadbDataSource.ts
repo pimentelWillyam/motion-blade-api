@@ -181,6 +181,10 @@ class MariadbDataSource implements IMariadbDataSource {
   async getMasterBy (parameter: string, value: string): Promise<IMaster> {
     return await this.pool?.query(`SELECT * FROM intranet.master WHERE ${parameter} = ${value} ;`) as IMaster
   }
+
+  async getServantBy (parameter: string, value: string): Promise<IServant> {
+    return await this.pool?.query(`SELECT * FROM intranet.master WHERE ${parameter} = ${value} ;`) as IServant
+  }
 }
 
 export default MariadbDataSource
