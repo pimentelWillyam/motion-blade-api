@@ -191,7 +191,7 @@ class MariadbDataSource implements IMariadbDataSource {
   }
 
   async updateUserById (id: string, login: string, password: string, email: string, type: string): Promise<IUserEntity> {
-    await this.pool?.query(`UPDATE  intranet.user SET id = '${id}', login = '${login}', password = '${password}', email = '${email}', type= '${type}' WHERE id = '${id}';`)
+    await this.pool?.query(`UPDATE  motion_blade.user SET id = '${id}', login = '${login}', password = '${password}', email = '${email}', type= '${type}' WHERE id = '${id}';`)
     return { id, login, password, email, type }
   }
 }
