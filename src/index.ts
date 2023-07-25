@@ -91,5 +91,4 @@ dotenv.config()
 
 // starting database and app
 void mariadbDataSource.openConnectionPool()
-// void oracledbDataSource.openConnectionPool()
 app.start()
